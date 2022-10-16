@@ -1,75 +1,63 @@
 import { useState } from "react";
-import { Button } from "react-bootstrap";
-import ExpenseTable from "./Expense-Table";
+import ExpenseEntry from "../Expense-Entry";
 
-export default function ExpenseForm() {
-  const [locationInput, setLocationInput] = useState("");
-  const [dateInput, setDateInput] = useState("");
-  const [expenseDescriptionInput, setExpenseDescriptionInput] = useState("");
-  const [dollarAmountInput, setDollarAmountInput] = useState("");
+const ExpenseForm = () => {
+  const [date, setDate] = useState("");
+  const [amount, setAmount] = useState(0);
+  const [purchaseLocation, setPurchaseLocation] = useState("");
+  const [purchaseDescription, setPurchaseDescription] = useState("");
 
-  const locationInputChangeHandler = (evt) => {
-    setLocationInput(evt.target.value);
-  };
-  const dateInputChangeHandler = (evt) => {
-    setDateInput(evt.target.value);
-  };
-  const expenseDescriptionInputChangeHandler = (evt) => {
-    setExpenseDescriptionInput(evt.target.value);
-  };
-  const dollarAmountInputChangeHandler = (evt) => {
-    setDollarAmountInput(evt.target.value);
-  };
+  let expenseList = [];
 
-  const handleSubmit = e => {
-    // console.log("Form Submitted")
+  const handleSubmit = (e) => {
     e.preventDefault();
-    setLocationInput("")
-    setDateInput("")
-    setExpenseDescriptionInput("")
-    setDollarAmountInput("")
-  }
+    const newExpense = {date, amount, purchaseDescription, purchaseLocation};
+    expenseList.push(newExpense);
+  };
 
   return (
-    <div className="createForm">
-      <h2>Add A New Expense</h2>
-      <form>
+    <div className="ExpenseForm">
+      <h2>Input An Expense</h2>
+      <form onSubmit={handleSubmit}>
         <input
           type="date"
-          name="expenseDate"
-          value={dateInput}
-          onChange={dateInputChangeHandler}
-          required
-        />
-        <input
-          type="text"
-          name="expenseDescription"
-          value={expenseDescriptionInput}
-          placeholder="Expense Description"
-          onChange={expenseDescriptionInputChangeHandler}
-          required
-        />
-        <br />
-        <input
-          type="text"
-          name="purchaseLocation"
-          value={locationInput}
-          placeholder="Purchase Location"
-          onChange={locationInputChangeHandler}
+          placeholder="Date of Purchase"
+          value={date}
+          onChange={(e) => setDate(e.target.value)}
           required
         />
         <input
           type="number"
-          placeholder="Dollar Amount"
-          value={dollarAmountInput}
-          onChange={dollarAmountInputChangeHandler}
+          placeholder="Amount of Purchase"
+          value={amount}
+          onChange={(e) => setAmount(e.target.value)}
           required
         />
-        <br />
-        <Button type="submit" onClick={handleSubmit}>Submit New Expense</Button>
+        <input
+          type="text"
+          placeholder="Location of Purchase"
+          value={purchaseLocation}
+          onChange={(e) => setPurchaseLocation(e.target.value)}
+          required
+        />
+        <input
+          type="text"
+          placeholder="Description of Purchase"
+          value={purchaseDescription}
+          onChange={(e) => setPurchaseDescription(e.target.value)}
+          required
+        />
+        <button>Submit Expense</button>
       </form>
-
-      <ExpenseTable handleSubmit={locationInput} />
+      <ExpenseEntry
+        date={date}
+        amount={amount}
+        location={purchaseLocation}
+        description={setPurchaseDescription}
+        list={expenseList}
+      />
     </div>
   );
-}
+};
+
+export default ExpenseForm;
