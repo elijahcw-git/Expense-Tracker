@@ -1,13 +1,28 @@
 import { v4 as uuid } from "uuid";
+import { useState } from "react";
 import { Button, Table } from "react-bootstrap";
 
-const table = document.getElementById("table");
-
 const CreateExpense = ({ list }) => {
-  const deleteEntry = (e) => {
-    table.removeChild(e.target)
-    
+  const [tableEntries, setTableEntries] = useState(list);
+
+  const handleDelete = (index, e) => {
+    setTableEntries(tableEntries.filter((v, i) => i !== index));
   };
+
+  const rows = tableEntries.map((expense, index) => {
+    return (
+      <tr key={index} className="expense-entry">
+        <td>{expense.date} </td>
+        <td>{expense.amount}</td>
+        <td>{expense.purchaseLocation}</td>
+        <td>{expense.purchaseDescription}</td>
+        <td>
+          <Button onClick={(e) => handleDelete(index, e)}>Delete</Button>
+        </td>
+      </tr>
+    );
+  });
+
   return (
     <div className="expenses">
       <Table id="table">
@@ -19,24 +34,7 @@ const CreateExpense = ({ list }) => {
             <th scope="col">Description</th>
           </tr>
         </thead>
-        <tbody>
-          {list.map((expense) => {
-            return (
-              <tr key={uuid()} className="expense-entry">
-                <td>{expense.date} </td>
-                <td>{expense.amount}</td>
-                <td>{expense.purchaseLocation}</td>
-                <td>{expense.purchaseDescription}</td>
-                <td>
-                  <Button
-                    onClick={deleteEntry}>
-                    Delete
-                  </Button>
-                </td>
-              </tr>
-            );
-          })}
-        </tbody>
+        <tbody>{rows}</tbody>
       </Table>
     </div>
   );
