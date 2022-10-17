@@ -1,23 +1,35 @@
 import { useState } from "react";
-import ExpenseEntry from "../Expense-Entry";
+import ExpenseEntry from "../ExpenseEntry/Expense-Entry";
+import { Button, Card } from "react-bootstrap";
 
 const ExpenseForm = () => {
   const [date, setDate] = useState("");
   const [amount, setAmount] = useState(0);
   const [purchaseLocation, setPurchaseLocation] = useState("");
   const [purchaseDescription, setPurchaseDescription] = useState("");
-
-  let expenseList = [];
+  const [expenseList, setExpenseList] = useState([]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const newExpense = {date, amount, purchaseDescription, purchaseLocation};
-    expenseList.push(newExpense);
+    const newExpense = {
+      date: date,
+      amount: amount,
+      purchaseDescription: purchaseDescription,
+      purchaseLocation: purchaseLocation,
+    };
+    setExpenseList((prevState) => {
+      return [...prevState, newExpense];
+    });
+    setDate("")
+    setAmount("")
+    setPurchaseDescription("")
+    setPurchaseLocation("")
   };
 
   return (
     <div className="ExpenseForm">
       <h2>Input An Expense</h2>
+      <Card className="form">
       <form onSubmit={handleSubmit}>
         <input
           type="date"
@@ -33,6 +45,7 @@ const ExpenseForm = () => {
           onChange={(e) => setAmount(e.target.value)}
           required
         />
+        <br />
         <input
           type="text"
           placeholder="Location of Purchase"
@@ -47,8 +60,10 @@ const ExpenseForm = () => {
           onChange={(e) => setPurchaseDescription(e.target.value)}
           required
         />
-        <button>Submit Expense</button>
+        <br />
+        <Button type="submit">Submit Expense</Button>
       </form>
+      </Card>
       <ExpenseEntry
         date={date}
         amount={amount}
