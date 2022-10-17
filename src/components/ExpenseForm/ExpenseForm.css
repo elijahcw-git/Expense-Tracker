@@ -1,0 +1,34 @@
+.ExpenseForm {
+  width: 80%;
+  margin: auto;
+}
+
+h2 {
+  padding-top: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.mb-3 {
+  border: solid 2px red;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+
+}
+
+.form-entry {
+    padding-top: 10px;
+    border: 2px solid orange;
+    width: 30%
+}
+
+.form-input {
+    border: 2px solid pink;
+    width: 30%
+}
+.button-style {
+  padding-top: 20px;
+  margin: auto;
+}

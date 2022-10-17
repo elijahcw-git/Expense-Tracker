@@ -1,20 +1,22 @@
 import { v4 as uuid } from "uuid";
 import { Button, Table } from "react-bootstrap";
 
+const table = document.getElementById("table");
+
 const CreateExpense = ({ list }) => {
   const deleteEntry = (e) => {
-    e.preventDefault();
-    e.target.parentElement.parentElement.remove();
+    table.removeChild(e.target)
+    
   };
   return (
     <div className="expenses">
-      <Table>
+      <Table id="table">
         <thead>
-            <tr>
-          <th scope="col">Date</th>
-          <th scope="col">Amount</th>
-          <th scope="col">Location</th>
-          <th scope="col">Description</th>
+          <tr>
+            <th scope="col">Date</th>
+            <th scope="col">Amount</th>
+            <th scope="col">Location</th>
+            <th scope="col">Description</th>
           </tr>
         </thead>
         <tbody>
@@ -25,7 +27,12 @@ const CreateExpense = ({ list }) => {
                 <td>{expense.amount}</td>
                 <td>{expense.purchaseLocation}</td>
                 <td>{expense.purchaseDescription}</td>
-                <td><Button onClick={deleteEntry}>Delete</Button></td>
+                <td>
+                  <Button
+                    onClick={deleteEntry}>
+                    Delete
+                  </Button>
+                </td>
               </tr>
             );
           })}
