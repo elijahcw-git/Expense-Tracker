@@ -1,40 +1,41 @@
 import { v4 as uuid } from "uuid";
 import { Button, Table } from "react-bootstrap";
+import "./ExpenseEntry.css";
 
 const CreateExpense = ({ list, setList }) => {
-
-  const handleDelete = (index, e) => {
-
-    console.log(e.target.parentNode.parentNode.id);
-    const expenseID = e.target.parentNode.parentNode.id
-    const newExpenseList = expenseListTable.filter((expenseItem) => expenseItem.props.id !== expenseID)
-    setList(newExpenseList)
-    
-
+  const handleDelete = (expense, e) => {
+    const newExpenseList = list.filter((expenseItem) => {
+      return expenseItem !== expense;
+    });
+    setList(newExpenseList);
   };
-  const expenseListTable = list.map((expense, index) => {
+  const expenseListTable = list.map((expense) => {
     return (
       <tr key={uuid()} id={uuid()} className="expense-entry">
         <td>{expense.date} </td>
         <td>{expense.amount}</td>
         <td>{expense.purchaseLocation}</td>
         <td>{expense.purchaseDescription}</td>
-        <td>
-          <Button onClick={e => handleDelete(index, e)}>Delete</Button>
+        <td id="del-button">
+          <Button variant="danger" onClick={(e) => handleDelete(expense, e)}>
+            Delete Row
+          </Button>
         </td>
       </tr>
     );
   });
-  // console.log(expenseListTable)
   return (
     <div className="expenses">
       <Table id="table">
         <thead>
           <tr>
-            <th scope="col">Date</th>
-            <th scope="col">Amount</th>
-            <th scope="col">Location</th>
-            <th scope="col">Description</th>
+            <th>Date</th>
+            <th>Dollar Amount</th>
+            <th>Location/Vendor</th>
+            <th>Description</th>
+            <th id="del-button-header">
+              Remove Expense
+            </th>
           </tr>
         </thead>
         <tbody>{expenseListTable}</tbody>

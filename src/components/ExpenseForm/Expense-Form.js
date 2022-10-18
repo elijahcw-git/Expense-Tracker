@@ -1,11 +1,11 @@
 import { useState } from "react";
 import ExpenseEntry from "../ExpenseEntry/Expense-Entry";
-import { Button, Form } from "react-bootstrap";
+import { Button, Form, Col, Row } from "react-bootstrap";
 import "./ExpenseForm.css";
 
 const ExpenseForm = () => {
   const [date, setDate] = useState("");
-  const [amount, setAmount] = useState(0);
+  const [amount, setAmount] = useState("");
   const [purchaseLocation, setPurchaseLocation] = useState("");
   const [purchaseDescription, setPurchaseDescription] = useState("");
   const [expenseList, setExpenseList] = useState([]);
@@ -21,7 +21,7 @@ const ExpenseForm = () => {
     setExpenseList((prevState) => {
       return [...prevState, newExpense];
     });
-   
+
     setDate("");
     setAmount("");
     setPurchaseDescription("");
@@ -30,10 +30,10 @@ const ExpenseForm = () => {
 
   return (
     <div className="ExpenseForm">
-      <h2>Input An Expense</h2>
+      
       <Form onSubmit={handleSubmit}>
+      <h1>Simple Expense Tracker</h1>
         <Form.Group className="mb-3">
-          <Form.Label className="form-entry">Date of Purchase</Form.Label>
           <Form.Control
             className="form-input"
             type="date"
@@ -42,7 +42,6 @@ const ExpenseForm = () => {
             onChange={(e) => setDate(e.target.value)}
             required
           />
-          <Form.Label className="form-entry">Dollar Amount</Form.Label>
           <Form.Control
             className="form-input"
             type="number"
@@ -51,7 +50,8 @@ const ExpenseForm = () => {
             onChange={(e) => setAmount(e.target.value)}
             required
           />
-          <Form.Label className="form-entry">Purchase Location/Vendor</Form.Label>
+        </Form.Group>
+        <Form.Group className="mb-3">
           <Form.Control
             className="form-input"
             type="text"
@@ -60,7 +60,6 @@ const ExpenseForm = () => {
             onChange={(e) => setPurchaseLocation(e.target.value)}
             required
           />
-          <Form.Label className="form-entry">Description of Purchase</Form.Label>
           <Form.Control
             className="form-input"
             type="text"
@@ -69,16 +68,12 @@ const ExpenseForm = () => {
             onChange={(e) => setPurchaseDescription(e.target.value)}
             required
           />
-          <br />
-          <div className="button-style">
-            <Button type="submit">Submit Expense</Button>
-          </div>
         </Form.Group>
+        <div className="button-style">
+          <Button variant="success" size="lg" type="submit">Submit Expense</Button>
+        </div>
       </Form>
-      <ExpenseEntry
-        list={expenseList}
-        setList={setExpenseList}
-      />
+      <ExpenseEntry list={expenseList} setList={setExpenseList} />
     </div>
   );
 };

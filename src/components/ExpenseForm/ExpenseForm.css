@@ -1,34 +1,57 @@
-.ExpenseForm {
-  width: 80%;
-  margin: auto;
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+
+body {
+  background-color: #0A043C
+  
 }
 
-h2 {
-  padding-top: 20px;
+.ExpenseForm {
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30px;
+  text-align: center;
+  background-color: #03506F;;
+  border-radius: 20px;
+  padding-bottom: 30px;
+}
+
+h1 {
+  font-family: 'Fredoka One', cursive;
+  color: azure;
+  width: 55%;
+  margin-left: auto;
+  margin-right: auto;
+  height: 60px;
+  padding-top: 15px;
+  padding-bottom: 50px;
   display: flex;
   flex-direction: row;
   justify-content: center;
+  
 }
 
 .mb-3 {
-  border: solid 2px red;
+  padding-top: 10px;
+  margin: auto;
+  width: 80%;
   display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-
-}
-
-.form-entry {
-    padding-top: 10px;
-    border: 2px solid orange;
-    width: 30%
+  flex-direction: row;
+  justify-content: space-evenly;
 }
 
 .form-input {
-    border: 2px solid pink;
-    width: 30%
+  padding-top: 10px;
+  width: 45%;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
 }
 .button-style {
-  padding-top: 20px;
+  font-family: 'Fredoka One', cursive;
+  width: 30%;
   margin: auto;
+  padding-bottom: 20px;
 }

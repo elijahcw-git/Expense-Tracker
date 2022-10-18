@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+
+.table {
+  width: 95%;
+  margin: auto;
+  background-color: #ffe3de;
+  border-radius: 6px;
+  font-family: 'Fredoka One', cursive;
+}
+
+thead {
+  background-color: #a3ddcb;;
+}
+
+tr th {
+  width: 20%;
+  display: flex;
+  align-items: center;
+}
+
+tr {
+  width: 100%;
+  display: flex;
+}
+
+tr td {
+  text-align: left;
+  width: 20%;
+}
+
+#del-button {
+  text-align: center;
+}
+
+#del-button-header {
+  display: flex;
+  justify-content: center;
+}
