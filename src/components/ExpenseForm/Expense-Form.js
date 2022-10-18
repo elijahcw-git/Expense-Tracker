@@ -21,6 +21,7 @@ const ExpenseForm = () => {
     setExpenseList((prevState) => {
       return [...prevState, newExpense];
     });
+   
     setDate("");
     setAmount("");
     setPurchaseDescription("");
@@ -75,11 +76,8 @@ const ExpenseForm = () => {
         </Form.Group>
       </Form>
       <ExpenseEntry
-        date={date}
-        amount={amount}
-        location={purchaseLocation}
-        description={setPurchaseDescription}
         list={expenseList}
+        setList={setExpenseList}
       />
     </div>
   );
