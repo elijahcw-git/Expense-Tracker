@@ -1,25 +1,23 @@
-@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap");
 
 body {
-  background-color: #0A043C
-  
+  background-color: #0a043c;
 }
 
 .ExpenseForm {
-  width: 60%;
+  width: 80%;
   margin-left: auto;
   margin-right: auto;
   margin-top: 30px;
   text-align: center;
-  background-color: #03506F;;
+  background-color: #03506f;
   border-radius: 20px;
   padding-bottom: 30px;
 }
 
 h1 {
-  font-family: 'Fredoka One', cursive;
+  font-family: "Fredoka One", cursive;
   color: azure;
-  width: 55%;
   margin-left: auto;
   margin-right: auto;
   height: 60px;
@@ -28,7 +26,6 @@ h1 {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  
 }
 
 .mb-3 {
@@ -50,7 +47,7 @@ h1 {
   flex-direction: row;
 }
 .button-style {
-  font-family: 'Fredoka One', cursive;
+  font-family: "Fredoka One", cursive;
   width: 30%;
   margin: auto;
   padding-bottom: 20px;

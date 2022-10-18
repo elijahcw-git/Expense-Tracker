@@ -1,6 +1,6 @@
 import { useState } from "react";
 import ExpenseEntry from "../ExpenseEntry/Expense-Entry";
-import { Button, Form, Col, Row } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
 import "./ExpenseForm.css";
 
 const ExpenseForm = () => {
@@ -10,6 +10,10 @@ const ExpenseForm = () => {
   const [purchaseDescription, setPurchaseDescription] = useState("");
   const [expenseList, setExpenseList] = useState([]);
 
+  function addToLocalStorage(item) {
+    localStorage.setItem("item", JSON.stringify(item));
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const newExpense = {
@@ -18,6 +22,7 @@ const ExpenseForm = () => {
       purchaseDescription: purchaseDescription,
       purchaseLocation: purchaseLocation,
     };
+    addToLocalStorage(newExpense);
     setExpenseList((prevState) => {
       return [...prevState, newExpense];
     });
@@ -30,9 +35,8 @@ const ExpenseForm = () => {
 
   return (
     <div className="ExpenseForm">
-      
-      <Form onSubmit={handleSubmit}>
       <h1>Simple Expense Tracker</h1>
+      <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3">
           <Form.Control
             className="form-input"
@@ -70,7 +74,9 @@ const ExpenseForm = () => {
           />
         </Form.Group>
         <div className="button-style">
-          <Button variant="success" size="lg" type="submit">Submit Expense</Button>
+          <Button variant="success" size="lg" type="submit">
+            Submit Expense
+          </Button>
         </div>
       </Form>
       <ExpenseEntry list={expenseList} setList={setExpenseList} />

@@ -3,10 +3,12 @@ import { Button, Table } from "react-bootstrap";
 import "./ExpenseEntry.css";
 
 const CreateExpense = ({ list, setList }) => {
+
   const handleDelete = (expense, e) => {
     const newExpenseList = list.filter((expenseItem) => {
       return expenseItem !== expense;
     });
+    
     setList(newExpenseList);
   };
   const expenseListTable = list.map((expense) => {
@@ -31,7 +33,7 @@ const CreateExpense = ({ list, setList }) => {
           <tr>
             <th>Date</th>
             <th>Dollar Amount</th>
-            <th>Location/Vendor</th>
+            <th>Location</th>
             <th>Description</th>
             <th id="del-button-header">
               Remove Expense
