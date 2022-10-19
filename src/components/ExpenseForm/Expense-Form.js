@@ -10,10 +10,6 @@ const ExpenseForm = () => {
   const [purchaseDescription, setPurchaseDescription] = useState("");
   const [expenseList, setExpenseList] = useState([]);
 
-  function addToLocalStorage(item) {
-    localStorage.setItem("item", JSON.stringify(item));
-  }
-
   const handleSubmit = (e) => {
     e.preventDefault();
     const newExpense = {
@@ -22,7 +18,6 @@ const ExpenseForm = () => {
       purchaseDescription: purchaseDescription,
       purchaseLocation: purchaseLocation,
     };
-    addToLocalStorage(newExpense);
     setExpenseList((prevState) => {
       return [...prevState, newExpense];
     });
