@@ -4,7 +4,7 @@
 
 You can use it [here]()
 
-![Expense Tracker](src\img\expensetrackerTN.png)
+![Expense Tracker](./src/img/expensetrackerTN.png)
 
 ### Summary
 
